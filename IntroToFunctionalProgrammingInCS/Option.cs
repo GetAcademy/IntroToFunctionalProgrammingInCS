@@ -4,7 +4,7 @@
     {
         public abstract Option<TResult> Run<TResult>(Func<T, TResult> f);
 
-        public static Option<T> Wrap<T>(T value)
+        public static Option<T> Wrap(T value)
         {
             return value == null ? new None<T>() : new Some<T>(value);
         }
@@ -21,7 +21,7 @@
 
         public override Option<TResult> Run<TResult>(Func<T, TResult> f)
         {
-            return Wrap(f(Data));
+            return Option<TResult>.Wrap(f(Data));
         }
 
     }

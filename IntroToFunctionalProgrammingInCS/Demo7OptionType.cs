@@ -26,9 +26,17 @@ namespace IntroToFunctionalProgrammingInCS
             ILeaderboardRepository leaderboardRepository)
         {
             var position = positionFinder.Get();
-            if (position == null) return null;
+            if (position == null)
+            {
+                // ...
+                return null;
+            }
             var place = placeLookup.Lookup(position);
-            if (place == null) return null;
+            if (place == null)
+            {
+                // ...
+                return null;
+            }
             var leaderboard = leaderboardRepository.GetByPlace(place);
             return leaderboard;
         }
