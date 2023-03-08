@@ -13,6 +13,8 @@
             var h2creator = CreateTagLambda("h2");
             Console.WriteLine(h1creator("Norge"));
             Console.WriteLine(h2creator("Stavern"));
+
+            // Action vs Func
         }
 
         public static string CreateTagWithoutCurrying(string tagName, string content)
