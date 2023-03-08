@@ -12,8 +12,7 @@ namespace IntroToFunctionalProgrammingInCS
         public static Leaderboard GetLeaderboardV1(
             IPositionFinder positionFinder,
             IPlaceLookup placeLookup,
-            ILeaderboardRepository leaderboardRepository
-            )
+            ILeaderboardRepository leaderboardRepository)
         {
             var position = positionFinder.Get();
             var place = placeLookup.Lookup(position);
@@ -34,23 +33,14 @@ namespace IntroToFunctionalProgrammingInCS
             return leaderboard;
         }
 
-        public static Leaderboard GetLeaderboardV3(
+        public static Option<Leaderboard> GetLeaderboardV3(
             IPositionFinder positionFinder,
             IPlaceLookup placeLookup,
             ILeaderboardRepository leaderboardRepository)
         {
-            // https://dev.to/ntreu14/let-s-implement-an-option-type-in-c-1ibn
-            return Wrap(positionFinder.Get())
-                .Wrap()
-            var place = placeLookup.Lookup(position);
-            if (place == null) return null;
-            var leaderboard = leaderboardRepository.GetByPlace(place);
-            return leaderboard;
-        }
-
-        static IOption<T> Wrap<T>(T value)
-        {
-            return value == null ? new None<T>() : new Some<T>(value);
+            return Option<Position>.Wrap(positionFinder.Get())
+                .Run(placeLookup.Lookup)
+                .Run(leaderboardRepository.GetByPlace);
         }
     }
 
@@ -71,10 +61,10 @@ namespace IntroToFunctionalProgrammingInCS
 
 
 
-    class Leaderboard{}
+    class Leaderboard { }
     public class Position
     {
-        public double Latitude { get;  }
+        public double Latitude { get; }
         public double Longitude { get; }
 
         public Position(double latitude, double longitude)

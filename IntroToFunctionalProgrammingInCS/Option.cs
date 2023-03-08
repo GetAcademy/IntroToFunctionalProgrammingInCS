@@ -1,26 +1,36 @@
 ﻿namespace IntroToFunctionalProgrammingInCS
 {
-    interface IOption<T>
+    abstract class Option<T>
     {
-        TResult Match<TResult>(Func<T, TResult> onSome, Func<TResult> onNone);
+        public abstract Option<TResult> Run<TResult>(Func<T, TResult> f);
+
+        public static Option<T> Wrap<T>(T value)
+        {
+            return value == null ? new None<T>() : new Some<T>(value);
+        }
     }
 
-    class Some<T> : IOption<T>
+    class Some<T> : Option<T>
     {
-        private T _data;
+        public T Data { get; }
 
         public Some(T data)
         {
-            _data = data;
+            Data = data;
         }
 
-        public TResult Match<TResult>(Func<T, TResult> onSome, Func<TResult> _) =>
-            onSome(_data);
+        public override Option<TResult> Run<TResult>(Func<T, TResult> f)
+        {
+            return Wrap(f(Data));
+        }
+
     }
 
-    class None<T> : IOption<T>
+    class None<T> : Option<T>
     {
-        public TResult Match<TResult>(Func<T, TResult> _, Func<TResult> onNone) =>
-            onNone();
+        public override Option<TResult> Run<TResult>(Func<T, TResult> f)
+        {
+            return new None<TResult>();
+        }
     }
 }
