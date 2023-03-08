@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Data;
+using System.IO;
 using System.Xml.Linq;
 
 namespace IntroToFunctionalProgrammingInCS
@@ -9,7 +10,8 @@ namespace IntroToFunctionalProgrammingInCS
         {
             // =>"Terje Albert Kolderup"
             //Console.WriteLine(NameCaseImperative("tErjE AlbErt kOldErUp"));
-            Console.WriteLine(NameCaseLinq("tErjE AlbErt kOldErUp"));
+            //Console.WriteLine(NameCaseLinq("tErjE AlbErt kOldErUp"));
+            Console.WriteLine(NameCase("tErjE AlbErt kOldErUp"));
         }
 
         // v1 imperative 
@@ -30,21 +32,42 @@ namespace IntroToFunctionalProgrammingInCS
         {
             var newParts = name
                 .Split(' ')
-                .Select(part => {
+                .Select(part =>
+                {
                     var lower = part.ToLower();
                     return char.ToUpper(lower[0]) + lower.Substring(1);
                 });
             return string.Join(' ', newParts);
         }
 
-    //// v3 funksjonell
-    //static string NameCase = 
+        // v3 funksjonell
+        static string NameCase(string text) => Pipe(
+                Split(' '),
+                Map(Pipe(ToLower, FirstToUpper)),
+                Join(' ')
+            )(text);
+
+        // naive functional helpers
+        static Func<string,string> Pipe(
+            Func<string, string[]> f1,
+            Func<string[], IEnumerable<string>> f2,
+            Func<IEnumerable<string>, string> f3)
+        {
+            return arg => f3(f2(f1(arg)));
+        }
+
+        static Func<string,string> Pipe(
+            Func<string, string> f1,
+            Func<string, string> f2)
+        {
+            return arg => f2(f1(arg));
+        }
 
         // point free and curried string functions
-        static Func<char, Func<string,string[]>> Split = separator => text => text.Split(separator);
+        static Func<char, Func<string, string[]>> Split = separator => text => text.Split(separator);
         static Func<string, string> FirstToUpper = s => char.ToUpper(s[0]) + s.Substring(1);
         static Func<string, string> ToLower = s => s.ToLower();
-
-
+        static Func<Func<string, string>, Func<string[], IEnumerable<string>>> Map = f => array => array.Select(e => f(e));
+        static Func<char, Func<IEnumerable<string>, string>> Join = separator => array => string.Join(separator, array);
     }
 }
