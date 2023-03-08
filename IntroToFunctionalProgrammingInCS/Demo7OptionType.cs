@@ -39,6 +39,7 @@ namespace IntroToFunctionalProgrammingInCS
             IPlaceLookup placeLookup,
             ILeaderboardRepository leaderboardRepository)
         {
+            // https://dev.to/ntreu14/let-s-implement-an-option-type-in-c-1ibn
             return Wrap(positionFinder.Get())
                 .Wrap()
             var place = placeLookup.Lookup(position);
