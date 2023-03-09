@@ -33,8 +33,8 @@
     {
         public int Count { get; } = 0;
         public int Sum { get; } = 0;
-        public int Min { get; }
-        public int Max { get; }
+        public int Min => throw  new ApplicationException();
+        public int Max => throw new ApplicationException();
         public float Mean => (float)Sum / Count;
         public IStats AddNumber(int number)
         {

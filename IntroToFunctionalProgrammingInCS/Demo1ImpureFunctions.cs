@@ -4,7 +4,10 @@
     {
         public static void Run()
         {
+            // eks 1
             Greet("Terje");
+
+            // eks
             var stats = new ImpureStats();
             stats.AddNumber(1);
             stats.AddNumber(2);
