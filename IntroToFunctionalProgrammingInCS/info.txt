@@ -8,7 +8,6 @@ Fire paradigmer:
     - objektorientert programmering
     - funksjonell programmering
 
-
 "Uncle Bob", Robert Martin: Clean Architecture:
 
 Each of the paradigms removes capabilities from the programmer. None of them adds new capabilities. 

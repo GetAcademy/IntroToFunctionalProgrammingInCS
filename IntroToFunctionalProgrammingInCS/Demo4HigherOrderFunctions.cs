@@ -4,25 +4,25 @@
     {
         public static void Run()
         {
-            var result = DoAndMeasureTime(Math.Sqrt, 4096);
+            var result = DoAndMeasureTime<double,double>(Math.Sqrt, 4096);
             result.Show();
-            result = DoAndMeasureTime(Math.Log2, 4096);
+            result = DoAndMeasureTime<double, double>(Math.Log2, 4096);
             result.Show();
         }
 
-        public static Result DoAndMeasureTime(Func<double,double> f, double arg)
+        public static Result<TResult> DoAndMeasureTime<T, TResult>(Func<T,TResult> f, T arg)
         {
             var startTime = DateTime.Now;
             var value = f(arg);
             var endTime = DateTime.Now;
-            return new Result(value, (endTime - startTime).TotalMilliseconds);
+            return new Result<TResult>(value, (endTime - startTime).TotalMilliseconds);
         }
 
-        internal class Result{
-            double Value { get; }
+        internal class Result<T>{
+            T Value { get; }
             double Millis { get; }
 
-            public Result(double value, double millis)
+            public Result(T value, double millis)
             {
                 Value = value;
                 Millis = millis;

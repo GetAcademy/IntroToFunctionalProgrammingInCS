@@ -11,18 +11,25 @@ namespace IntroToFunctionalProgrammingInCS
             //Console.WriteLine(NameCaseLinq("tErjE AlbErt kOldErUp"));
             //Console.WriteLine(NameCase("tErjE AlbErt kOldErUp"));
 
-            Console.WriteLine(Casing.makeNameCase("tErjE AlbErt kOldErUp"));
+            var fixNameCase = Pipe(
+                Split(' '),
+                Map(Pipe(ToLower, FirstToUpper)),
+                Join(' ')
+            );
+            Console.WriteLine(fixNameCase("tErjE AlbErt kOldErUp"));
+
+            //Console.WriteLine(Casing.makeNameCase("tErjE AlbErt kOldErUp"));
         }
 
         // v1 imperative 
         static string NameCaseImperative(string name)
         {
-            var parts = name.Split(' ');
+            var words = name.Split(' ');
             var newName = "";
-            foreach (var part in parts)
+            foreach (var word in words)
             {
                 if (newName.Length > 0) newName += ' ';
-                newName += char.ToUpper(part[0]) + part.Substring(1).ToLower();
+                newName += char.ToUpper(word[0]) + word.Substring(1).ToLower();
             }
             return newName;
         }
@@ -46,6 +53,7 @@ namespace IntroToFunctionalProgrammingInCS
                 Map(Pipe(ToLower, FirstToUpper)),
                 Join(' ')
             )(text);
+
 
         // naive functional helpers
         static Func<string,string> Pipe(

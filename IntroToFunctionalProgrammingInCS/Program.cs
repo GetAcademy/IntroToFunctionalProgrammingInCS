@@ -18,14 +18,12 @@
 //Demo1ImpureFunctions.Run();
 //Demo2PureFunctions.Run();
 //Demo3HonestAndPureFunctions.Run();
-
-// Pause 13:03
-
 //Demo4HigherOrderFunctions.Run();
 //Demo5CurryingAndPartialApplication.Run();
-//Demo6PointfreePipeAndComposition.Run();
+Demo6PointfreePipeAndComposition.Run();
 //Demo7OptionType.Run();
 
+ActionAndFuncDemo.Run();
 //int i = 5;
 //int j = i;
 //j = 7;
