@@ -1,12 +1,9 @@
-﻿using System.Reflection;
-
-namespace IntroToFunctionalProgrammingInCS
+﻿namespace IntroToFunctionalProgrammingInCS
 {
     internal class Demo7OptionType
     {
         public static void Run()
         {
-
         }
 
         public static Leaderboard GetLeaderboardV1(

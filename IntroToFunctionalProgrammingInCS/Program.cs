@@ -5,5 +5,6 @@
 //Demo3HonestAndPureFunctions.Run();
 //Demo4HigherOrderFunctions.Run();
 //Demo5CurryingAndPartialApplication.Run();
-//Demo6PointfreePipeAndComposition.Run();
-Demo7OptionType.Run();
+Demo6PointfreePipeAndComposition.Run();
+//Demo7OptionType.Run();
+

@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.IO;
-using System.Xml.Linq;
+﻿using ClassLibraryFS;
 
 namespace IntroToFunctionalProgrammingInCS
 {
@@ -11,7 +9,9 @@ namespace IntroToFunctionalProgrammingInCS
             // =>"Terje Albert Kolderup"
             //Console.WriteLine(NameCaseImperative("tErjE AlbErt kOldErUp"));
             //Console.WriteLine(NameCaseLinq("tErjE AlbErt kOldErUp"));
-            Console.WriteLine(NameCase("tErjE AlbErt kOldErUp"));
+            //Console.WriteLine(NameCase("tErjE AlbErt kOldErUp"));
+
+            Console.WriteLine(Casing.makeNameCase("tErjE AlbErt kOldErUp"));
         }
 
         // v1 imperative 
