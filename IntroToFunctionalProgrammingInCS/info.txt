@@ -2,14 +2,6 @@ Funksjonell programmering
  - Definisjon - https://en.wikipedia.org/wiki/Functional_programming
  - Parallellisering
 
-
-
-class vs struct vs record
-class og struct fra start - https://www.c-sharpcorner.com/blogs/difference-between-struct-and-class-in-c-sharp
-record C# v9 https://anthonygiretti.com/2020/06/17/introducing-c-9-records/
-
-
-
 Fire paradigmer: 
  - ustrukturert programmering
  - strukturert programmering
@@ -34,3 +26,15 @@ decades that have followed, no new paradigms have been added
 Terjes perspektiv: 
  - Kan du unngå tilstand, så gjør det => funksjonell programmering
  - Ellers, kapsle inn tilstand => objektorientert programmering
+
+https://fsharpforfunandprofit.com/video/
+
+* Andre ting
+
+class vs struct vs record
+class og struct fra start - https://www.c-sharpcorner.com/blogs/difference-between-struct-and-class-in-c-sharp
+record C# v9 https://anthonygiretti.com/2020/06/17/introducing-c-9-records/
+
+
+
+
